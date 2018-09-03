@@ -39,6 +39,8 @@ namespace BatteryDetectDebug
         private int SP_ReadBytes = 0;
         private String StringTemperatureValue = "---";
         private String StringTemperatureAD = "";
+
+        private const bool SHOW_TEMP_AD_VALUE = false;
         SynchronizationContext m_SyncContext = null;
         public BatteryDetectDebug()
         {
@@ -52,8 +54,12 @@ namespace BatteryDetectDebug
             String[] ComList = SerialPort.GetPortNames();
             BoxCom.Items.Clear();
             BoxCom.Items.AddRange(ComList);
-            BoxCom.SelectedIndex = 0;
-            BoxReadList.SelectedIndex = 0 ;
+            Debug.WriteLine("BoxCom.Items.Count:" + BoxCom.Items.Count);
+            if(0 != BoxCom.Items.Count)
+            {
+                BoxCom.SelectedIndex = 0;
+            }
+            BoxReadList.SelectedIndex = 0;
             BoxSetList.SelectedIndex = 0;
             serialPort1.DataReceived += new SerialDataReceivedEventHandler(SerialPortDataRecived);
         }
@@ -208,9 +214,12 @@ namespace BatteryDetectDebug
                     m_SyncContext.Post(SetLabelReceivedDataText, DataString);
                     //LabelReceivedCnt.Text = ReceivedTimes + "";
                     m_SyncContext.Post(SetLabelReceivedCntText, ReceivedTimes + "");
-                    TempValue = (SP_RX_Buffer[6] << 8) | SP_RX_Buffer[7];
-                    StringTemperatureAD = TempValue + "";
-                    m_SyncContext.Post(SetLabelTempText, StringTemperatureValue + "  " + StringTemperatureAD);
+                    if(SHOW_TEMP_AD_VALUE)
+                    {
+                        TempValue = (SP_RX_Buffer[6] << 8) | SP_RX_Buffer[7];
+                        StringTemperatureAD = TempValue + "";
+                        m_SyncContext.Post(SetLabelTempText, StringTemperatureValue + "  " + StringTemperatureAD);
+                    }
                     SP_ReadBytes = 0;
                     //Debug.WriteLine("DataString:" + DataString);
                     return;
@@ -349,6 +358,11 @@ namespace BatteryDetectDebug
 
         private void BtnOpen_Click(object sender, EventArgs e)
         {
+            if(-1 == BoxCom.SelectedIndex)
+            {
+                MessageBox.Show("请选择正确的端口");
+                return;
+            }
             //如果串口没有打开则打开串口  如果已经打开则关闭串口
             if (false == serialPort1.IsOpen)
             {
@@ -420,33 +434,33 @@ namespace BatteryDetectDebug
                 case 0:
                     SerialPortDataSend(CMD_GET_TEMPERATURE, 0);
                     break;
-                //读火焰状态
-                case 1:
-                    SerialPortDataSend(CMD_GET_FIRE_STATUS, 0);
-                    break;
-                //读AD参考值
-                case 2:
-                    SerialPortDataSend(CMD_GET_ADC_REF_VALUE, 0);
-                    break;
                 //读版本号
-                case 3:
+                case 1:
                     SerialPortDataSend(CMD_GET_VERSION, 0);
                     break;
-                //读档位回退时间
+                //读灵敏度
+                case 2:
+                    SerialPortDataSend(CMD_GET_SWITCH_SPEED_VAVLE, 0);
+                    break;
+                //读开火温度
+                case 3:
+                    SerialPortDataSend(CMD_GET_OPEN_FIRE_TEMP, 0);
+                    break;
+                //读火焰状态
                 case 4:
+                    SerialPortDataSend(CMD_GET_FIRE_STATUS, 0); 
+                    break;
+                //读AD参考值
+                case 5:
+                    SerialPortDataSend(CMD_GET_ADC_REF_VALUE, 0); 
+                    break;
+                //读档位回退时间
+                case 6:
                     SerialPortDataSend(CMD_GET_SPEED_BACK_TIME, 0);
                     break;
                 //读开火温度稳定时间
-                case 5:
-                    SerialPortDataSend(CMD_GET_TEMP_FIRE_STABLE_TIME, 0);
-                    break;
-                //读开火温度
-                case 6:
-                    SerialPortDataSend(CMD_GET_OPEN_FIRE_TEMP, 0);
-                    break;
-                //读跳档值
                 case 7:
-                    SerialPortDataSend(CMD_GET_SWITCH_SPEED_VAVLE, 0);
+                    SerialPortDataSend(CMD_GET_TEMP_FIRE_STABLE_TIME, 0);
                     break;
                 default:
                     break;
@@ -461,23 +475,23 @@ namespace BatteryDetectDebug
             TempValue = Convert.ToInt32(EditSetData.Text, 10);
             switch (Select)
             {
-                //设置开火温度
+                //灵敏度
                 case 0:
-                    if((TempValue < 0) || (TempValue > 100))
-                    {
-                        MessageBox.Show("错误:开火温度范围为0-100,当前值:" + EditSetData.Text);
-                        return;
-                    }
-                    SerialPortDataSend(CMD_SET_OPEN_FIRE_TEMPERATURE, TempValue);
-                    break;
-                //跳转值
-                case 1:
                     if ((TempValue < 0) || (TempValue > 100))
                     {
                         MessageBox.Show("错误:跳档值范围为0-100,当前值:" + EditSetData.Text);
                         return;
                     }
                     SerialPortDataSend(CMD_SET_SWITCH_SPEED_VAVLE, TempValue);
+                    break; 
+                //设置开火温度
+                case 1:
+                    if ((TempValue < 0) || (TempValue > 100))
+                    {
+                        MessageBox.Show("错误:开火温度范围为0-100,当前值:" + EditSetData.Text);
+                        return;
+                    }
+                    SerialPortDataSend(CMD_SET_OPEN_FIRE_TEMPERATURE, TempValue);
                     break;
                 //档位回退时间
                 case 2:

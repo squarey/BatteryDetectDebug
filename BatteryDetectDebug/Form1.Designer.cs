@@ -49,6 +49,7 @@
             this.CheckBoxOpenFire = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label11 = new System.Windows.Forms.Label();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.LabelReceivedCnt = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -71,7 +72,6 @@
             this.BtnSet = new System.Windows.Forms.Button();
             this.BoxSetList = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -293,6 +293,17 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(501, 304);
             this.flowLayoutPanel1.TabIndex = 29;
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label11.Location = new System.Drawing.Point(3, 10);
+            this.label11.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(95, 19);
+            this.label11.TabIndex = 11;
+            this.label11.Text = "串口选择:";
+            // 
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.Controls.Add(this.LabelReceivedText);
@@ -356,7 +367,7 @@
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(96, 19);
             this.label10.TabIndex = 28;
-            this.label10.Text = "跳 档 值:";
+            this.label10.Text = "灵 敏 度:";
             // 
             // LabelTempFire
             // 
@@ -445,13 +456,13 @@
             this.BoxReadList.FormattingEnabled = true;
             this.BoxReadList.Items.AddRange(new object[] {
             "温度",
+            "版本号",
+            "灵敏度",
+            "开火温度",
             "点火状态",
             "AD参考值",
-            "版本号",
             "档位回退时间",
-            "开火温度稳定时间",
-            "开火温度",
-            "跳档值"});
+            "开火温度稳定时间"});
             this.BoxReadList.Location = new System.Drawing.Point(7, 31);
             this.BoxReadList.Name = "BoxReadList";
             this.BoxReadList.Size = new System.Drawing.Size(165, 27);
@@ -527,8 +538,8 @@
             this.BoxSetList.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.BoxSetList.FormattingEnabled = true;
             this.BoxSetList.Items.AddRange(new object[] {
+            "灵敏度",
             "开火温度",
-            "跳档值",
             "档位回退时间",
             "开火温度稳定时间"});
             this.BoxSetList.Location = new System.Drawing.Point(8, 28);
@@ -545,17 +556,6 @@
             this.label4.Size = new System.Drawing.Size(85, 19);
             this.label4.TabIndex = 0;
             this.label4.Text = "设置项：";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label11.Location = new System.Drawing.Point(3, 10);
-            this.label11.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(95, 19);
-            this.label11.TabIndex = 11;
-            this.label11.Text = "串口选择:";
             // 
             // BatteryDetectDebug
             // 
