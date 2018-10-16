@@ -18,3 +18,13 @@ E:\Github\VisualStudio\BatteryDetectDebug\BatteryDetectDebug\obj\Debug\BatteryDe
 E:\Github\VisualStudio\BatteryDetectDebug\BatteryDetectDebug\obj\Debug\BatteryDetectDebug.csproj.CoreCompileInputs.cache
 E:\Github\VisualStudio\BatteryDetectDebug\BatteryDetectDebug\obj\Debug\BatteryDetectDebug.exe
 E:\Github\VisualStudio\BatteryDetectDebug\BatteryDetectDebug\obj\Debug\BatteryDetectDebug.pdb
+F:\GitHub\Visual Studio Project\BatteryDetectDebug\BatteryDetectDebug\bin\Debug\BatteryDetectDebug.exe.config
+F:\GitHub\Visual Studio Project\BatteryDetectDebug\BatteryDetectDebug\bin\Debug\BatteryDetectDebug.exe
+F:\GitHub\Visual Studio Project\BatteryDetectDebug\BatteryDetectDebug\bin\Debug\BatteryDetectDebug.pdb
+F:\GitHub\Visual Studio Project\BatteryDetectDebug\BatteryDetectDebug\obj\Debug\BatteryDetectDebug.csprojAssemblyReference.cache
+F:\GitHub\Visual Studio Project\BatteryDetectDebug\BatteryDetectDebug\obj\Debug\BatteryDetectDebug.BatteryDetectDebug.resources
+F:\GitHub\Visual Studio Project\BatteryDetectDebug\BatteryDetectDebug\obj\Debug\BatteryDetectDebug.Properties.Resources.resources
+F:\GitHub\Visual Studio Project\BatteryDetectDebug\BatteryDetectDebug\obj\Debug\BatteryDetectDebug.csproj.GenerateResource.cache
+F:\GitHub\Visual Studio Project\BatteryDetectDebug\BatteryDetectDebug\obj\Debug\BatteryDetectDebug.csproj.CoreCompileInputs.cache
+F:\GitHub\Visual Studio Project\BatteryDetectDebug\BatteryDetectDebug\obj\Debug\BatteryDetectDebug.exe
+F:\GitHub\Visual Studio Project\BatteryDetectDebug\BatteryDetectDebug\obj\Debug\BatteryDetectDebug.pdb
